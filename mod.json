@@ -1,9 +1,9 @@
 {
-    "displayName": "Mod Template",
-    "description": "Mindustry Java mod template, complete with EntityAnno and syntax downgrader integration.",
-    "version": "v1.0",
+    "displayName": "Zephyr",
+    "description": "A Mindustry java mod where my ideas go into.",
+    "version": "v0.0.1",
     "minGameVersion": "146",
-    "author": "You",
+    "author": "SMOLKEYS",
     "java": true,
-    "main": "template.ModTemplate"
+    "main": "zeph.Zephyr"
 }

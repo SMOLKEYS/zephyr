@@ -1,8 +1,6 @@
-import arc.files.*
-import arc.util.*
+import arc.files.Fi
+import arc.util.OS
 import arc.util.serialization.Jval
-
-import java.util.regex.*
 
 buildscript{
     dependencies{
@@ -143,6 +141,8 @@ configure(rootProject){
     tasks.register('dex', Jar){
         inputs.files tasks.jar
         archiveFileName = "${modArtifact}.jar"
+        group("build")
+        description("Assembles a jar archive then processes it with d8, making it available for Android to use. The Android SDK IS required to use this task.")
 
         final def desktopJar = tasks.jar.archiveFile
         final def dexJar = file("$temporaryDir/Dexed.jar")
@@ -192,6 +192,9 @@ for(def i = 0; i < 2; i++){
     final def input = isDex ? tasks.dex : tasks.jar
 
     tasks.register(name){
+        group("build")
+        description(isDex ? "Assembles a dexed jar archive and copies it to the Mindustry data directory." : "Assembles a jar archive and copies it to the Mindustry data directory.")
+
         inputs.files input
         doLast{
             def folder = Fi.get(OS.getAppDataDirectoryString('Mindustry')).child('mods')
